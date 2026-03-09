@@ -80,7 +80,6 @@ Soil_2021_compress <- Soil_2021_round |>
   mutate("Exceedances(%)" = paste(Exceedance_count, "(", Exceedance_percent, ")", sep = ""))|> print()
 
 
-----------------
 ### 2022 Soil Stats check
 
 ##import 2022 soil data from Box
@@ -127,7 +126,7 @@ Soil_2022_compress <- Soil_2022_redo_round |>
 
 ##export & fix old tables; do stats testing for vanadium
 
-## combinding tables w/ formatting 
+## combining tables w/ formatting 
 Soil_Detailed_with_format <- bind_rows(
   Soil_2021_compress |> mutate(Year = "2021"),
   Soil_2022_compress |> mutate(Year = "2022")
