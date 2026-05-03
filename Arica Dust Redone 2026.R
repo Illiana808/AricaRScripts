@@ -4,8 +4,9 @@
 # Importing data for Dust 
 
 library(readxl)
-arica_dust2022 <- read_excel("~/Library/CloudStorage/Box-Box/Illiana Samorano/Arica_Chile/Data_soil_dust/Original Gardenroots Data/arica_dust2022.xlsx")
-View(arica_dust2022)
+arica_dust2022 <- read_excel("~/Library/CloudStorage/Box-Box/Illiana Samorano/Arica_Chile/Data_soil_dust/Arica Data Workspace/Arica_dust_data_Redo.xlsx", 
+    sheet = "FormattingforR")
+print(arica_dust2022)
 
 library(tidyverse)
 library(tibble)
@@ -44,7 +45,7 @@ Dust_exceedences_out_in <- tribble(
 #Pivot longer analyte data
 Piv_1_Arica_Dust <- 
   tibble(arica_dust2022) |> 
-  pivot_longer(cols = aluminum:copper, names_to = "Analyte", values_to = "value") |> print()
+  pivot_longer(cols = beryllium:lead, names_to = "Analyte", values_to = "value") |> print()
 
 # Full table for Arica Dust
 Dust_T <- full_join(Piv_1_Arica_Dust, Dust_exceedences_out_in, by = c("Analyte" = "Analyte", "type" = "type"), relationship = "many-to-many") |> 
@@ -81,6 +82,9 @@ Combine <- Dust_T_round |>
 
 print(Combine)
 
+
+
+  
 # Runni
 
 
